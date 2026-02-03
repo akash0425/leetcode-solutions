@@ -1,0 +1,3 @@
+# Write your MySQL query statement below
+Select concat(year(trans_date),'-', LPAD(month(trans_date),2,'0')) AS month,country,count(id) AS trans_count,count(CASE WHEN state='approved' THEN id END) AS approved_count,sum(amount) AS trans_total_amount,COALESCE(sum(CASE WHEN state='approved' THEN amount END),0) AS approved_total_amount from Transactions group by 1,2
+-- Select concat(year(trans_date),'-', month(trans_date)) from Transactions
